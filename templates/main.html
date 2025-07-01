@@ -2,12 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
 </head>
 
 <body>
+    <header>
+        <h1>Todo List</h1>
+        <button class="add-task">+</button>
+    </header>
+    <div class="sidebar">
+        <ul>
+            <li id="home">Home</li>
+            <li id="today">Today</li>
+            <li>Groups</li>
+            <li class="groups-list">
+                <ul id="groups-ul">
+                </ul>
+            </li>
+            <li id="add-group">+ Group</li>
+        </ul>
+    </div>
+    <div class="tasks-container">
+        <h1>Home</h1>
+        <hr>
+        <div class="tasks-list"></div>
+    </div>
 
+    <div class="modal">
+        <div class="modal-content">
+            <span>Add new Task
+                <hr>
+            </span>
+            <form action="">
+                <div class="inputs">
+
+                    <div class="form-left">
+                        <label for="title">Title:<br>
+                            <input type="text" name="title" id="title" required>
+                        </label>
+                        <label for="desc">Description:<br>
+                            <textarea name="desc" id="desc"></textarea>
+                        </label>
+                    </div>
+
+                    <div class="form-right">
+                        <label for="group">Group:<br>
+                            <select name="group" id="group">
+                                <option value="Home">Home</option>
+                            </select>
+                        </label>
+
+                        <label>Priority:<br>
+                            <div class="priority-group">
+                                <label for="low"><input type="radio" name="priority" id="low" value="low"> Low</label>
+                                <label for="medium"><input type="radio" name="priority" id="medium" value="medium">
+                                    Medium</label>
+                                <label for="high"><input type="radio" name="priority" id="high" value="high">
+                                    High</label>
+                            </div>
+                        </label>
+
+                        <label for="date">Date:<br>
+                            <input type="date" name="date" id="date">
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal group-modal">
+        <div class="modal-content">
+            <span>Add new group
+                <hr>
+            </span>
+
+            <label for="group-name">Group Name:
+                <input type="text" name="group-name" id="group-name">
+            </label>
+
+            <button class="add-group-btn">Add</button>
+        </div>
+    </div>
 </body>
+
 </html>
