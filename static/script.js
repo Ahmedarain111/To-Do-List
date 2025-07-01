@@ -84,7 +84,3 @@ document.querySelector('.add-group-btn').addEventListener('click', () => {
     document.querySelector('#group-name').value = '';
     document.querySelector('.group-modal').style.display = 'none';
 });
-
-
-
-const tasksList = new TaskList();
