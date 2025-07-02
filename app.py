@@ -5,6 +5,7 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
+
 CORS(app)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
