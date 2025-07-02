@@ -5,13 +5,12 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
 CORS(app)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'tasks.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+db = SQLAlchemy(app)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
