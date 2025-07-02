@@ -3,33 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const addgroupButton = document.querySelector('#add-group');
 
     addButton.addEventListener('click', () => {
-        openModal();
+        openModal('.modal');
     });
 
     addgroupButton.addEventListener('click', () => {
-        document.querySelector('.group-modal').style.display = 'flex';
+        openModal('.group-modal');
     });
 
     // MODAL Functions
-    function openModal() {
-        document.querySelector('.modal').style.display = 'flex';
+    function openModal(modal) {
+        document.querySelector(modal).style.display = 'flex';
     }
 
-    function closeModal() {
-        document.querySelector('.modal').style.display = 'none';
+    function closeModal(modal) {
+        document.querySelector(modal).style.display = 'none';
     }
 
     // Close modals when clicking outside of them
     window.onclick = function (event) {
-        const taskModal = document.querySelector('.modal');
-        const groupModal = document.querySelector('.group-modal');
-
-        if (event.target === taskModal) {
-            closeModal();
-        }
-
-        if (event.target === groupModal) {
-            groupModal.style.display = 'none';
+        if (event.target === document.querySelector('.modal')) {
+            closeModal('.modal');
+        } else if (event.target === document.querySelector('.group-modal')) {
+            closeModal('.group-modal');
         }
     };
 });
