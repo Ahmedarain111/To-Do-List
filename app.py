@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
@@ -32,6 +32,18 @@ class Task(db.Model):
 @app.route('/')
 def main():
     return render_template('main.html')
+
+@app.route('/add-task', methods=['POST'])
+def add_task():
+    title = request.form['title']
+    desc = request.form['desc']
+    priority = request.form['priority']
+    date = request.form['date']
+    group = request.form['group']
+    
+    new_task = Task(title=title, desc=desc, priority=priority, date=datetime.strptime(date, '%Y-%m-%d'), group=group)
+    db.session.add(new_task)
+    db.session.commit()
 
 
 if __name__ == '__main__':
