@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
@@ -44,6 +44,8 @@ def add_task():
     new_task = Task(title=title, desc=desc, priority=priority, date=datetime.strptime(date, '%Y-%m-%d'), group=group)
     db.session.add(new_task)
     db.session.commit()
+    
+    return redirect(url_for('main'))
 
 
 if __name__ == '__main__':
