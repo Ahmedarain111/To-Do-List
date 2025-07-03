@@ -29,7 +29,24 @@
     <div class="tasks-container">
         <h1>Home</h1>
         <hr>
-        <div class="tasks-list"></div>
+        <div class="tasks-list">
+            {% for t in tasks %}
+            <div class="task">
+                <span>{{ t.title }}</span>
+                <span style="cursor: pointer;">
+                    <img src="{{ url_for('static', filename='images/cross.png') }}" alt="Remove task"
+                        class="task-remove-img">
+                </span>
+
+                <div class="task-dropdown">
+                    <p><b>Due Date:</b> {{ t.date.strftime('%Y-%m-%d') }}</p>
+                    <p><b>Priority:</b> {{ t.priority }}</p>
+                    <p><b>Description:</b> {{ t.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
     </div>
 
     <div class="modal">
