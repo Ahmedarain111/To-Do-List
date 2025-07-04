@@ -49,6 +49,15 @@ def add_task():
     
     return redirect(url_for('main'))
 
+@app.route('/add-group', methods=['POST'])
+def add_group():
+    name = request.form['group-name']
+    
+    new_group = Group(name=name)
+    db.session.add(new_group)
+    db.session.commit()
+    
+    return redirect(url_for('main'))
 
 if __name__ == '__main__':
     app.run(debug=True)

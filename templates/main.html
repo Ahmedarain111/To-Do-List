@@ -34,8 +34,7 @@
             <div class="task">
                 <span>{{ t.title }}</span>
                 <span style="cursor: pointer;">
-                    <img src="{{ url_for('static', filename='icons/cross.png') }}" alt="Remove"
-                        class="task-remove-img">
+                    <img src="{{ url_for('static', filename='icons/cross.png') }}" alt="Remove" class="task-remove-img">
                 </span>
 
                 <div class="task-dropdown">
@@ -99,12 +98,12 @@
             <span>Add new group
                 <hr>
             </span>
-
-            <label for="group-name">Group Name:
-                <input type="text" name="group-name" id="group-name">
-            </label>
-
-            <button class="add-group-btn">Add</button>
+            <form action="{{url_for('add_group')}}" method="POST">
+                <label for="group-name">Group Name:
+                    <input type="text" name="group-name" id="group-name">
+                </label>
+                <button class="add-group-btn" type="submit">Add</button>
+            </form>
         </div>
     </div>
 </body>
