@@ -21,6 +21,9 @@
             <li>Groups</li>
             <li class="groups-list">
                 <ul id="groups-ul">
+                    {% for group in groups%}
+                        <li>- {{group.name}}</li>
+                    {% endfor%}
                 </ul>
             </li>
             <li id="add-group">+ Group</li>
