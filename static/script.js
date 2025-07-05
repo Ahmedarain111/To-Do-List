@@ -27,33 +27,36 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal('.group-modal');
         }
     };
+
+    // Task
+    document.querySelectorAll('.task').forEach(task => {
+        const dropdown = task.querySelector('.task-dropdown');
+
+        task.addEventListener('mouseover', () => {
+            dropdown.style.opacity = '1';
+            dropdown.style.transform = 'translateY(0)';
+
+            const dropdownHeight = dropdown.offsetHeight + 10;
+            let nextTask = task.nextElementSibling;
+            while (nextTask) {
+                nextTask.style.transition = 'transform 0.3s ease';
+                nextTask.style.transform = `translateY(${dropdownHeight}px)`;
+                nextTask = nextTask.nextElementSibling;
+            }
+        });
+
+        task.addEventListener('mouseout', () => {
+            dropdown.style.opacity = '0';
+            dropdown.style.transform = 'translateY(-10px)';
+
+            let nextTask = task.nextElementSibling;
+            while (nextTask) {
+                nextTask.style.transition = 'transform 0.3s ease';
+                nextTask.style.transform = 'translateY(0)';
+                nextTask = nextTask.nextElementSibling;
+            }
+        });
+    });
 });
 
-document.querySelectorAll('.task').forEach(task => {
-    const dropdown = task.querySelector('.task-dropdown');
 
-    task.addEventListener('mouseover', () => {
-        dropdown.style.opacity = '1';
-        dropdown.style.transform = 'translateY(0)';
-        
-        const dropdownHeight = dropdown.offsetHeight + 10;
-        let nextTask = task.nextElementSibling;
-        while (nextTask) {
-            nextTask.style.transition = 'transform 0.3s ease';
-            nextTask.style.transform = `translateY(${dropdownHeight}px)`;
-            nextTask = nextTask.nextElementSibling;
-        }
-    });
-
-    task.addEventListener('mouseout', () => {
-        dropdown.style.opacity = '0';
-        dropdown.style.transform = 'translateY(-10px)';
-
-        let nextTask = task.nextElementSibling;
-        while (nextTask) {
-            nextTask.style.transition = 'transform 0.3s ease';
-            nextTask.style.transform = 'translateY(0)';
-            nextTask = nextTask.nextElementSibling;
-        }
-    });
-});
