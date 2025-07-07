@@ -22,7 +22,7 @@
             <li class="groups-list">
                 <ul id="groups-ul">
                     {% for group in groups%}
-                        <li class="custom-group">- {{group.name}}</li>
+                    <li class="custom-group">- {{group.name}}</li>
                     {% endfor%}
                 </ul>
             </li>
@@ -36,9 +36,11 @@
             {% for t in tasks %}
             <div class="task">
                 <span>{{ t.title }}</span>
-                <span style="cursor: pointer;">
-                    <img src="{{ url_for('static', filename='icons/cross.png') }}" alt="Remove" class="task-remove-img">
-                </span>
+                <form method="POST" action="{{ url_for('delete_task', task_id=t.id) }}">
+                    <button type="submit" style="all: unset;"><img
+                            src="{{ url_for('static', filename='icons/cross.png') }}" alt="Remove"
+                            class="task-remove-img"></button>
+                </form>
 
                 <div class="task-dropdown">
                     <p><b>Due Date:</b> {{ t.date.strftime('%Y-%m-%d') }}</p>
