@@ -57,6 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    document.querySelectorAll('#groups-ul li').forEach(groupItem => {
+    groupItem.addEventListener('click', () => {
+        const groupName = groupItem.textContent.trim();
+        window.location.href = `/?group=${encodeURIComponent(groupName)}`;
+    });
+});
+
 });
 
 

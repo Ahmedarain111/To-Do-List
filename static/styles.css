@@ -290,3 +290,14 @@ button:hover {
     transform: scale(1.2);
     opacity: 1;
 }
+
+.sidebar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.active a {
+    font-weight: bold;
+    color: #333;
+}

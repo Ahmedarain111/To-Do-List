@@ -31,8 +31,12 @@ class Task(db.Model):
 
 @app.route('/')
 def main():
-    tasks = Task.query.all()
     groups = Group.query.all()
+    group = request.args.get('group')
+    if group:
+        tasks = Task.query.filter_by(group=group).all()
+    else:
+        tasks = Task.query.all()
     return render_template('main.html', tasks=tasks, groups=groups)
 
 @app.route('/add-task', methods=['POST'])
