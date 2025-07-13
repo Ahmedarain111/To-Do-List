@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelector('#home').addEventListener('click', () => {
+        window.location.href = '/';
+    });
+
     document.querySelectorAll('#groups-ul li').forEach(groupItem => {
     groupItem.addEventListener('click', () => {
         const groupName = groupItem.textContent.trim();
